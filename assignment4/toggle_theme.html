@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Toggle Theme</title>
+  <style>
+    .day {
+      background-color: white;
+      color: black;
+    }
+
+    .night {
+      background-color: black;
+      color: gold;
+    }
+
+    .button_night {
+      background-color: darkblue;
+      color: white;
+    }
+
+    .button_day {
+      background-color: white;
+      color: black;
+    }
+
+    html, body {
+      margin: 0px;
+      height: 100%;
+    }
+
+    #app {
+      height: 100%;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app" class="day">
+    <p>I am a HashedBit student, ready to become an awesome full stack developer</p>
+    <button onclick="swapTheme()" id="swap" class="button_day">Toggle theme</button>
+  </div>
+
+  <script>
+    function swapTheme() {
+      const app = document.getElementById("app");
+      const btn = document.getElementById("swap");
+
+      if (app.className === "day") {
+        app.className = "night";
+        btn.className = "button_night";
+      } else {
+        app.className = "day";
+        btn.className = "button_day";
+      }
+    }
+  </script>
+
+</body>
+</html>

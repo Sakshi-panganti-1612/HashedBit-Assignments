@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Assignment</title>
+</head>
+
+<body>
+
+<h2>JavaScript Assignment Output</h2>
+
+<p>Open Console to see results.</p>
+
+<script>
+
+// 1. Even numbers from 1 to 100
+console.log("Even numbers from 1 to 100:");
+
+for (let i = 1; i <= 100; i++) {
+    if (i % 2 === 0) {
+        console.log(i);
+    }
+}
+
+
+// 2. Calculator using switch
+function calculate(num1, num2, operator) {
+
+    switch(operator) {
+
+        case "+":
+            return num1 + num2;
+
+        case "-":
+            return num1 - num2;
+
+        case "*":
+            return num1 * num2;
+
+        case "/":
+            return num1 / num2;
+
+        default:
+            return "Invalid operator";
+    }
+}
+
+console.log("Addition:", calculate(10,5,"+"));
+
+
+// 3. Tax Calculation
+function findTax(salary) {
+
+    let tax = 0;
+
+    switch(true){
+
+        case (salary > 0 && salary <= 500000):
+            tax = 0;
+            break;
+
+        case (salary > 500000 && salary <= 1000000):
+            tax = salary * 0.10;
+            break;
+
+        case (salary > 1000000 && salary <= 1500000):
+            tax = salary * 0.20;
+            break;
+
+        case (salary > 1500000):
+            tax = salary * 0.30;
+            break;
+    }
+
+    return tax;
+}
+
+console.log("Tax for 1200000 salary:", findTax(1200000));
+
+
+// 4. Sum of products of corresponding digits
+function sumOfProducts(n1, n2) {
+
+    let sum = 0;
+
+    while (n1 > 0 || n2 > 0) {
+
+        let digit1 = n1 % 10;
+        let digit2 = n2 % 10;
+
+        sum += digit1 * digit2;
+
+        n1 = Math.floor(n1 / 10);
+        n2 = Math.floor(n2 / 10);
+    }
+
+    return sum;
+}
+
+console.log("Sum of Products:", sumOfProducts(6,34));
+
+</script>
+
+</body>
+</html>

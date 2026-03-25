@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hide Show Para</title>
+</head>
+<body>
+
+  <h1>I am a headline made with HTML</h1>
+  <br />
+  <p id="useless-paragraph">Useless paragraph.</p>
+  <br />
+  <button onclick="toggleVisibility()">Toggle Button</button>
+
+  <script>
+    function toggleVisibility() {
+      const para = document.getElementById("useless-paragraph");
+
+      if (para.style.visibility === "hidden") {
+        para.style.visibility = "visible";
+      } else {
+        para.style.visibility = "hidden";
+      }
+    }
+  </script>
+
+</body>
+</html>

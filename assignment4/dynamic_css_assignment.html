@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic CSS</title>
+  <style>
+    .text-here {
+      font-size: 55px;
+      font-family: sans-serif;
+      color: black;
+      text-decoration: none;
+      font-style: normal;
+      font-weight: normal;
+      line-height: normal;
+      text-align: left;
+      letter-spacing: normal;
+      word-spacing: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <div class='text-here' id='text-container'>This is some example text</div>
+
+  <input type="text" id="colorbox">
+  <button id="colorchange">Change Colour</button>
+
+  <br><br>
+
+  <input type="range" id="fontsize" min="10" max="100" value="55">
+  <br><br>
+
+  <button id="italic" class="stylebt">Italics</button>
+  <button id="underline" class="stylebt">Underline</button>
+  <button id="bold" class="stylebt">Bold</button>
+
+  <br><br>
+
+  <select id="list">
+    <option value="serif">Serif</option>
+    <option value="sans-serif">Sans-Serif</option>
+    <option value="monospace">Monospace</option>
+    <option value="cursive">Cursive</option>
+    <option value="fantasy">Fantasy</option>
+  </select>
+
+  <br><br>
+
+  <button id="getstyle">Get CSS</button>
+
+  <br><br>
+  <p id="css-props"></p>
+
+  <script>
+    const text = document.getElementById("text-container");
+
+    // ── Change Colour ──────────────────────────────────────────
+    document.getElementById("colorchange").addEventListener("click", function () {
+      const color = document.getElementById("colorbox").value.trim();
+      if (color) {
+        text.style.color = color;
+      }
+    });
+
+    // ── Font Size Slider ───────────────────────────────────────
+    document.getElementById("fontsize").addEventListener("input", function () {
+      text.style.fontSize = this.value + "px";
+    });
+
+    // ── Italic ─────────────────────────────────────────────────
+    document.getElementById("italic").addEventListener("click", function () {
+      if (text.style.fontStyle === "italic") {
+        text.style.fontStyle = "normal";
+      } else {
+        text.style.fontStyle = "italic";
+      }
+    });
+
+    // ── Underline ──────────────────────────────────────────────
+    document.getElementById("underline").addEventListener("click", function () {
+      if (text.style.textDecoration === "underline") {
+        text.style.textDecoration = "none";
+      } else {
+        text.style.textDecoration = "underline";
+      }
+    });
+
+    // ── Bold ───────────────────────────────────────────────────
+    document.getElementById("bold").addEventListener("click", function () {
+      if (text.style.fontWeight === "bold") {
+        text.style.fontWeight = "normal";
+      } else {
+        text.style.fontWeight = "bold";
+      }
+    });
+
+    // ── Font Family Dropdown ───────────────────────────────────
+    document.getElementById("list").addEventListener("change", function () {
+      text.style.fontFamily = this.value;
+    });
+
+    // ── Get CSS ────────────────────────────────────────────────
+    document.getElementById("getstyle").addEventListener("click", function () {
+      const style = text.style;
+
+      const color      = style.color      || "black";
+      const fontSize   = style.fontSize   || "55px";
+      const fontFamily = style.fontFamily || "sans-serif";
+      const fontStyle  = style.fontStyle  || "normal";
+      const fontWeight = style.fontWeight || "normal";
+      const textDec    = style.textDecoration || "none";
+
+      const cssText =
+        `color: ${color}; ` +
+        `font-size: ${fontSize}; ` +
+        `font-family: ${fontFamily}; ` +
+        `font-style: ${fontStyle}; ` +
+        `font-weight: ${fontWeight}; ` +
+        `text-decoration: ${textDec};`;
+
+      document.getElementById("css-props").textContent = cssText;
+    });
+  </script>
+
+</body>
+</html>
